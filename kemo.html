@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>for my koky ♡</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: #f8eee2;
+    color: #5b3a29;
+}
+
+section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 50px 25px;
+}
+
+.hero {
+    background: linear-gradient(#f8eee2, #f3dfca);
+}
+
+.bears {
+    font-size: 55px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+h2 {
+    font-size: 35px;
+    margin-bottom: 25px;
+}
+
+p {
+    max-width: 650px;
+    font-size: 19px;
+    line-height: 1.8;
+    white-space: pre-line;
+}
+
+.subtitle {
+    font-size: 18px;
+    opacity: 0.8;
+}
+
+button {
+    margin-top: 35px;
+    padding: 13px 28px;
+    border: none;
+    border-radius: 30px;
+    background: #7a5038;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #5b3a29;
+    transform: scale(1.05);
+}
+
+.soft {
+    background: #f5e5d5;
+}
+
+.safe {
+    background: #f8eee2;
+}
+
+.future {
+    background: #ead7c2;
+}
+
+.memories {
+    background: #f5e5d5;
+}
+
+.graduation {
+    background: #ead7c2;
+}
+
+.final {
+    background: #f8eee2;
+    min-height: 100vh;
+}
+
+.memory-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 22px;
+    margin-top: 25px;
+    max-width: 1000px;
+}
+
+.memory-card {
+    background: #fff8f0;
+    border-radius: 20px;
+    padding: 25px;
+    width: 280px;
+    box-shadow: 0 8px 20px rgba(91, 58, 41, 0.08);
+}
+
+.memory-card h3 {
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.memory-card p {
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.photo-placeholder {
+    width: 280px;
+    height: 200px;
+    border-radius: 20px;
+    background: #ead7c2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    font-size: 17px;
+    color: #76513d;
+}
+
+.heart {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.small {
+    font-size: 16px;
+    opacity: 0.75;
+    margin-top: 15px;
+}
+
+
+/* FINAL BEAR ANIMATION */
+
+.bear-scene {
+    position: relative;
+    width: 360px;
+    height: 220px;
+    margin-top: 45px;
+    overflow: hidden;
+}
+
+.bear {
+    position: absolute;
+    bottom: 25px;
+    width: 105px;
+    height: 120px;
+    border-radius: 50% 50% 45% 45%;
+    animation-duration: 2.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}
+
+.bear::before,
+.bear::after {
+    content: "";
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    top: -15px;
+}
+
+.bear::before {
+    left: 5px;
+}
+
+.bear::after {
+    right: 5px;
+}
+
+.bear-left {
+    left: 25px;
+    background: #c99468;
+    animation-name: moveLeft;
+}
+
+.bear-left::before,
+.bear-left::after {
+    background: #c99468;
+}
+
+.bear-right {
+    right: 25px;
+    background: #e2b58e;
+    animation-name: moveRight;
+}
+
+.bear-right::before,
+.bear-right::after {
+    background: #e2b58e;
+}
+
+.face {
+    position: absolute;
+    top: 38px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 22px;
+    letter-spacing: 8px;
+}
+
+.belly {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 55px;
+    height: 45px;
+    background: #f2d2b5;
+    border-radius: 50%;
+}
+
+.arm {
+    position: absolute;
+    width: 70px;
+    height: 18px;
+    border-radius: 20px;
+    top: 65px;
+    background: inherit;
+    z-index: 3;
+}
+
+.bear-left .arm {
+    right: -45px;
+    transform: rotate(15deg);
+}
+
+.bear-right .arm {
+    left: -45px;
+    transform: rotate(-15deg);
+}
+
+.hearts {
+    position: absolute;
+    left: 50%;
+    top: 10px;
+    transform: translateX(-50%);
+    font-size: 25px;
+    opacity: 0;
+    animation: hearts 2s 2.3s ease-in-out forwards;
+}
+
+@keyframes moveLeft {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(65px);
+    }
+}
+
+@keyframes moveRight {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-65px);
+    }
+}
+
+@keyframes hearts {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 20px) scale(0.5);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -10px) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -40px) scale(1.2);
+    }
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 38px;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+
+    p {
+        font-size: 17px;
+    }
+
+    .memory-card {
+        width: 90%;
+    }
+
+    .bear-scene {
+        transform: scale(0.85);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<section class="hero" id="home">
+    <div class="bears">🧸 ♡ 🧸</div>
+
+    <h1>for my koky ♡</h1>
+
+    <p class="subtitle">a little something made just for you</p>
+
+    <button onclick="goTo('us')">open it ♡</button>
+</section>
+
+
+<!-- PAGE 2 -->
+<section class="soft" id="us">
+    <div class="heart">♡</div>
+
+    <h2>you & me</h2>
+
+    <p>
+I don't think you realize how much having you in my life means to me.
+
+It's all the little things I remember the most.
+The conversations, the laughs, the random moments,
+and simply having you there.
+
+Some of my favorite memories are the ones
+that probably seemed completely ordinary at the time.
+
+I'm just really glad they happened with you.
+    </p>
+
+    <button onclick="goTo('safe')">next ♡</button>
+</section>
+
+
+<!-- PAGE 3 -->
+<section class="safe" id="safe">
+    <div class="heart">♡</div>
+
+    <h2>you made me feel safe ♡</h2>
+
+    <p>
+I don't think you know how safe I felt that day.
+
+It wasn't just about holding your hand.
+Somehow, having you there made everything
+feel a little quieter, a little easier.
+
+For a moment, I didn't have to think about anything.
+I just felt safe with you.
+    </p>
+
+    <div class="photo-placeholder">
+        our picture goes here ♡
+    </div>
+
+    <button onclick="goTo('future')">next ♡</button>
+</section>
+
+
+<!-- PAGE 4 -->
+<section class="future" id="future">
+    <div class="heart">♡</div>
+
+    <h2>about the future ♡</h2>
+
+    <p>
+I know life is going to change,
+and someday you're going to finish school
+and go back to Egypt.
+
+And honestly...
+
+I already know I'm going to miss you.
+
+I'll miss having you close,
+the little moments,
+your presence,
+and simply knowing you're somewhere nearby.
+
+But even when things change,
+I hope you always remember
+how happy I am to see you grow
+and become the person you're meant to be.
+    </p>
+
+    <button onclick="goTo('memories')">our memories ♡</button>
+</section>
+
+
+<!-- PAGE 5 -->
+<section class="memories" id="memories">
+    <div class="heart">♡</div>
+
+    <h2>our little memories</h2>
+
+    <p class="subtitle">little things, big memories</p>
+
+    <div class="memory-container">
+
+        <div class="memory-card">
+            <h3>♡ our first hug</h3>
+
+            <p>
+One of the little moments
+I'll always remember.
+
+Our first hug somehow became
+one of those memories
+that stayed with me.
+            </p>
+        </div>
+
+
+        <div class="memory-card">
+            <h3>♡ the day we almost got caught</h3>
+
+            <p>
+You came over, everything was fine…
+until I got the “Mom is coming home” text 😭
+
+I told you to leave ASAP,
+but of course she saw you leaving.
+
+We were BOTH terrified,
+got chased down,
+and ended up getting a lecture.
+
+Still one of the dumbest
+and funniest memories we have.
+            </p>
+        </div>
+
+
+        <div class="memory-card">
+            <h3>♡ when you came back</h3>
+
+            <p>
+You had just come back from Egypt,
+and after missing you for so long,
+I finally got to see you again.
+
+I don't even think I thought about it.
+I just ran to you and threw myself into your arms.
+
+That hug felt like everything
+I had been waiting for.
+
+I think that's when I realized
+just how much I had missed you. ♡
+            </p>
+        </div>
+
+    </div>
+
+    <button onclick="goTo('graduation')">one last thing ♡</button>
+</section>
+
+
+<!-- PAGE 6 -->
+<section class="graduation" id="graduation">
+    <div class="heart">♡</div>
+
+    <h2>before you graduate</h2>
+
+    <p>
+I know you haven't graduated yet,
+but you're getting so close,
+and I just want you to know
+how proud I am of you.
+
+I'm so happy watching you get closer
+to this new chapter of your life,
+even if a part of me already knows
+how much I'm going to miss you
+when you go back to Egypt.
+
+So before that happens,
+I just want to make the most
+of every moment I get with you.
+
+Every little conversation,
+every laugh,
+every hug,
+and every ordinary day
+that I get to have you around.
+
+I don't want to spend these moments
+thinking about the day you'll leave.
+
+I just want to enjoy them,
+make more memories with you,
+and keep every little moment
+close to my heart.
+
+I'm so proud of you, Karim.
+
+And no matter where life takes you next,
+I'll always be happy that I got to be here
+for this part of your journey. ♡
+    </p>
+
+    <button onclick="goTo('final')">♡</button>
+</section>
+
+
+<!-- FINAL PAGE -->
+<section class="final" id="final">
+
+    <div class="heart">♡</div>
+
+    <h2>and whatever comes next...</h2>
+
+    <p>
+I'll always be grateful
+that I got to share these moments with you.
+
+Here's to all the memories
+we haven't made yet. ♡
+    </p>
+
+    <div class="bear-scene">
+
+        <div class="hearts">♡ ♥ ♡</div>
+
+        <div class="bear bear-left">
+            <div class="face">•ᴗ•</div>
+            <div class="belly"></div>
+            <div class="arm"></div>
+        </div>
+
+        <div class="bear bear-right">
+            <div class="face">•ᴗ•</div>
+            <div class="belly"></div>
+            <div class="arm"></div>
+        </div>
+
+    </div>
+
+    <p class="small">made with love, just for you ♡</p>
+
+</section>
+
+
+<script>
+function goTo(sectionId) {
+    document.getElementById(sectionId).scrollIntoView({
+        behavior: "smooth"
+    });
+}
+</script>
+
+</body>
+</html>
